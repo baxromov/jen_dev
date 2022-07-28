@@ -2,7 +2,13 @@ pipeline {
     agent any
     stages {
         stage ('Setup Python virtual environment'){
+            steps{
+                sh '''
+                        chmod +x ./initial-setup.sh
+                        ./initial-setup.sh
+                    '''
 
+            }
             steps{
                 sh '''
                         chmod +x ./envsetup.sh
