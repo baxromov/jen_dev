@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=root
+Group=nginx
+WorkingDirectory=/var/lib/jenkins/workspace/DjangoApp
+ExecStart=/var/lib/jenkins/workspace/jen_dev/venv/bin/gunicorn --workers 3 --log-level debug --error-logfile /var/lib/jenkins/workspace/jen_dev/error.log --bind unix:/var/lib/jenkins/jen_dev/app.sock jen_dev.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
