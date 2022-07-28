@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stages ('Setup Python virtual environment'){
+        stage ('Setup Python virtual environment'){
             steps{
                 ssh '''
                         chmod +x ./envsetup.sh
@@ -10,7 +10,7 @@ pipeline {
 
             }
         }
-        stages ('Setup Gunicorn service') {
+        stage ('Setup Gunicorn service') {
             steps {
                 ssh '''
                         chmod +x ./gunicorn.sh
@@ -18,7 +18,7 @@ pipeline {
                     '''
             }
         }
-        stages ('Setup Nginx service') {
+        stage ('Setup Nginx service') {
             steps {
                 ssh '''
                         chmod +x ./nginx.sh
